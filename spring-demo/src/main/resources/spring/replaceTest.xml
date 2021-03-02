@@ -4,14 +4,11 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<import resource="lookupTest.xml"/>
-
-	<import resource="replaceTest.xml"/>
-
-	<bean id="myTestBean" class="com.cedar.demo.lookup.MyTestBean">
-		<description>my test bean</description>
-		<meta key="testStr" value="aaaaaaaa"/>
+	<bean id="testChangeMethod" class="com.cedar.demo.replace.TestChangeMethod">
+		<replaced-method name="changeMe" replacer="testMethodReplacer"/>
 	</bean>
+
+	<bean id="testMethodReplacer" class="com.cedar.demo.replace.TestMethodReplacer"/>
 
 
 </beans>

@@ -2,6 +2,7 @@ package com.cedar.demo;
 
 import com.cedar.demo.lookup.GetBeanTest;
 import com.cedar.demo.lookup.MyTestBean;
+import com.cedar.demo.replace.TestChangeMethod;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -26,6 +27,9 @@ public class Entrance {
 		String testStr = (String) myTestBean1.getAttribute("testStr");
 		System.out.println(testStr);
 
+		String description = myTestBean1.getDescription();
+		System.out.println(description);
+
 		MyTestBean myTestBean = (MyTestBean) beanFactory.getBean("myTestBean");
 
 		System.out.println(myTestBean.getTestStr());
@@ -36,6 +40,12 @@ public class Entrance {
 		GetBeanTest getBeanTest = (GetBeanTest) beanFactory.getBean("getBeanTest");
 
 		getBeanTest.showMe();
+
+
+		System.out.println("##########################################################################");
+
+		TestChangeMethod testChangeMethod = (TestChangeMethod)beanFactory.getBean("testChangeMethod");
+		testChangeMethod.changeMe();
 
 	}
 }
