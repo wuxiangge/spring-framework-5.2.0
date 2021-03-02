@@ -7,7 +7,9 @@
 	<import resource="lookupTest.xml"/>
 
 	<bean id="myTestBean" class="com.cedar.demo.lookup.MyTestBean">
+		<description>my test bean</description>
 		<meta key="testStr" value="aaaaaaaa"/>
 	</bean>
+
 
 </beans>
