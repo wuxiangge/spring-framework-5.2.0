@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config/>
+
+	<import resource="customer/customerTag.xml"/>
 
 
 	<import resource="lookupTest.xml"/>
 
 	<import resource="replaceTest.xml"/>
 
-	<bean id="myTestBean" class="com.cedar.demo.lookup.MyTestBean">
+	<import resource="propertiesTest.xml"/>
+
+	<bean id="myTestBean" class="com.cedar.demo.dto.MyTestBean">
 		<description>my test bean</description>
-		<meta key="testStr" value="aaaaaaaa"/>
+
+		<qualifier type="com.cedar.demo.dto.QualifierClazz" value="qualifierClazz"/>
+
+		<constructor-arg index="0" name="testStr">
+			<value>ConstructorTest</value>
+		</constructor-arg>
+		<meta key="testStr" value="mataTest"/>
+
+		<!--注解没有生效看怎么处理-->
+		<property name="qualifierClazz" ref="qualifierClazz"/>
+
 	</bean>
+
+
+	<bean id="qualifierClazz" class="com.cedar.demo.dto.QualifierClazz"/>
 
 
 </beans>

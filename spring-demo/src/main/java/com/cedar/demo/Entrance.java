@@ -1,7 +1,8 @@
 package com.cedar.demo;
 
+import com.cedar.demo.dto.MyTestBean;
 import com.cedar.demo.lookup.GetBeanTest;
-import com.cedar.demo.lookup.MyTestBean;
+import com.cedar.demo.properties.PropertiesTest;
 import com.cedar.demo.replace.TestChangeMethod;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -33,6 +34,7 @@ public class Entrance {
 		MyTestBean myTestBean = (MyTestBean) beanFactory.getBean("myTestBean");
 
 		System.out.println(myTestBean.getTestStr());
+		myTestBean.printQualifier();
 
 
 		System.out.println("##########################################################################");
@@ -44,8 +46,16 @@ public class Entrance {
 
 		System.out.println("##########################################################################");
 
-		TestChangeMethod testChangeMethod = (TestChangeMethod)beanFactory.getBean("testChangeMethod");
+		TestChangeMethod testChangeMethod = (TestChangeMethod) beanFactory.getBean("testChangeMethod");
 		testChangeMethod.changeMe();
+
+
+		System.out.println("##########################################################################");
+
+		PropertiesTest propertiesTest = (PropertiesTest) beanFactory.getBean("propertiesTest");
+		System.out.println(propertiesTest.getNums());
+		System.out.println(propertiesTest.getTestStr());
+
 
 	}
 }
