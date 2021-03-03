@@ -59,3 +59,4 @@ https\://www.springframework.org/schema/util/spring-util-4.2.xsd=org/springframe
 https\://www.springframework.org/schema/util/spring-util-4.3.xsd=org/springframework/beans/factory/xml/spring-util.xsd
 https\://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util.xsd
 https\://www.wuxiangge.com/schema/user-bean.xsd=com/cedar/demo/customertag/user-bean.xsd
+http\://www.wuxiangge.com/schema/user-bean.xsd=com/cedar/demo/customertag/user-bean.xsd

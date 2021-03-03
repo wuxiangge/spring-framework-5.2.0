@@ -61,7 +61,7 @@ public class Entrance {
 		System.out.println("##########################################################################");
 
 		UserBeanDefinition userBeanDefinition = (UserBeanDefinition) beanFactory.getBean("testId");
-		System.out.println(userBeanDefinition.getEmail());
+		System.out.println(userBeanDefinition.getUserName());
 		System.out.println(userBeanDefinition.getEmail());
 
 	}
