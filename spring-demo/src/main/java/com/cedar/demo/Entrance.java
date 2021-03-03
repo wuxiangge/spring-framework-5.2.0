@@ -1,5 +1,6 @@
 package com.cedar.demo;
 
+import com.cedar.demo.customertag.UserBeanDefinition;
 import com.cedar.demo.dto.MyTestBean;
 import com.cedar.demo.lookup.GetBeanTest;
 import com.cedar.demo.properties.PropertiesTest;
@@ -56,6 +57,12 @@ public class Entrance {
 		System.out.println(propertiesTest.getNums());
 		System.out.println(propertiesTest.getTestStr());
 
+
+		System.out.println("##########################################################################");
+
+		UserBeanDefinition userBeanDefinition = (UserBeanDefinition) beanFactory.getBean("testId");
+		System.out.println(userBeanDefinition.getEmail());
+		System.out.println(userBeanDefinition.getEmail());
 
 	}
 }
