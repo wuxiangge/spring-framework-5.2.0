@@ -2,6 +2,7 @@ package com.cedar.demo;
 
 import com.cedar.demo.customertag.UserBeanDefinition;
 import com.cedar.demo.dto.MyTestBean;
+import com.cedar.demo.factorybean.Car;
 import com.cedar.demo.lookup.GetBeanTest;
 import com.cedar.demo.properties.PropertiesTest;
 import com.cedar.demo.replace.TestChangeMethod;
@@ -63,6 +64,13 @@ public class Entrance {
 		UserBeanDefinition userBeanDefinition = (UserBeanDefinition) beanFactory.getBean("testId");
 		System.out.println(userBeanDefinition.getUserName());
 		System.out.println(userBeanDefinition.getEmail());
+
+
+		System.out.println("##########################################################################");
+
+		Car car = (Car) beanFactory.getBean("car");
+		System.out.println(car.getBrand());
+		System.out.println(car.getPrice());
 
 	}
 }
