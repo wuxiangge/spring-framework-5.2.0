@@ -17,6 +17,11 @@ public class MyTestBean {
 		this.testStr = testStr;
 	}
 
+	public MyTestBean(QualifierClazz qualifierClazz, String testStr) {
+		this.qualifierClazz = qualifierClazz;
+		this.testStr = testStr;
+	}
+
 	public String getTestStr() {
 		return testStr;
 	}
