@@ -3,9 +3,13 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<!--	<context:annotation-config/>-->
+	<context:annotation-config/>
 
 	<import resource="customer/customerTag.xml"/>
 
@@ -28,7 +32,7 @@
 		<meta key="testStr" value="mataTest"/>
 
 		<!--注解没有生效看怎么处理 xmlfactory 不支持注解-->
-		<property name="qualifierClazz" ref="qualifierClazz"/>
+<!--		<property name="qualifierClazz" ref="qualifierClazz"/>-->
 
 	</bean>
 

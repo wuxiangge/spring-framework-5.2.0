@@ -600,7 +600,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// Initialize the bean instance.
 		Object exposedObject = bean;
 		try {
-			// 填充bean的属性
+			// 填充bean的属性 重点分析
 			populateBean(beanName, mbd, instanceWrapper);
 			// 调用初始化方法  比如init-method
 			exposedObject = initializeBean(beanName, exposedObject, mbd);
@@ -1342,6 +1342,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 						getAccessControlContext());
 			}
 			else {
+				//如果有需要在i盖或者动态替换的方法则当然需要使用cglib 进行动态代理，因为可以在创建代理的同时
+				//将动态方法织人类中
+				//但是如果没有需要动态改变得方法，为了方便直接反射就可以了
 				beanInstance = getInstantiationStrategy().instantiate(mbd, beanName, parent);
 			}
 			BeanWrapper bw = new BeanWrapperImpl(beanInstance);
@@ -1544,10 +1547,15 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 				// Don't try autowiring by type for type Object: never makes sense,
 				// even if it technically is a unsatisfied, non-simple property.
 				if (Object.class != pd.getPropertyType()) {
+                    //探测指定属性的set 方法
 					MethodParameter methodParam = BeanUtils.getWriteMethodParameter(pd);
 					// Do not allow eager init for type matching in case of a prioritized post-processor.
 					boolean eager = !PriorityOrdered.class.isInstance(bw.getWrappedInstance());
 					DependencyDescriptor desc = new AutowireByTypeDependencyDescriptor(methodParam, eager);
+					//解析指定bean Name 的属性所匹配的值， 并把解析到的属性名称存储在
+					//autowiredBeanNames 中， 当属性存在多个封装bean
+					//@Autowired private List<A> aList ， 将会找到所有匹配A 类型的bean 并将
+					//其注入
 					Object autowiredArgument = resolveDependency(desc, beanName, autowiredBeanNames, converter);
 					if (autowiredArgument != null) {
 						pvs.add(propertyName, autowiredArgument);

@@ -148,6 +148,9 @@ class ConstructorResolver {
 				}
 			}
 			if (argsToResolve != null) {
+				//解析参数类型， 如给定方法的构造函数A( int , int ） 则通过此方法后就会把配置中的
+				//（ ” 1 ”，” 1 ” ）转换为(1 , 1)
+				// 缓存中的值可能是原始值也可能是最终值
 				argsToUse = resolvePreparedArguments(beanName, mbd, bw, constructorToUse, argsToResolve, true);
 			}
 		}
@@ -215,7 +218,9 @@ class ConstructorResolver {
 
 				ArgumentsHolder argsHolder;
 				if (resolvedValues != null) {
+					// 有参数则根据值构造对应参数类型的参数
 					try {
+						// 注释上获取参数名称
 						String[] paramNames = ConstructorPropertiesChecker.evaluate(candidate, paramTypes.length);
 						if (paramNames == null) {
 							ParameterNameDiscoverer pnd = this.beanFactory.getParameterNameDiscoverer();
@@ -246,9 +251,11 @@ class ConstructorResolver {
 					argsHolder = new ArgumentsHolder(explicitArgs);
 				}
 
+				// 探测是否有不确定性的构造函数存在
 				int typeDiffWeight = (mbd.isLenientConstructorResolution() ?
 						argsHolder.getTypeDifferenceWeight(paramTypes) : argsHolder.getAssignabilityWeight(paramTypes));
 				// Choose this constructor if it represents the closest match.
+				// 如果他代表着当前最接近的匹配则选择作为构造函数
 				if (typeDiffWeight < minTypeDiffWeight) {
 					constructorToUse = candidate;
 					argsHolderToUse = argsHolder;
@@ -943,16 +950,19 @@ class ConstructorResolver {
 		}
 
 		public int getAssignabilityWeight(Class<?>[] paramTypes) {
+			// 遍历参数类型，如果转换后的参数对象类型不是继承或实现自参数类型，则返回最大整数
 			for (int i = 0; i < paramTypes.length; i++) {
 				if (!ClassUtils.isAssignableValue(paramTypes[i], this.arguments[i])) {
 					return Integer.MAX_VALUE;
 				}
 			}
+			// 遍历参数类型，如果原参数对象类型不是继承或实现自参数类型，则返回最大值-512
 			for (int i = 0; i < paramTypes.length; i++) {
 				if (!ClassUtils.isAssignableValue(paramTypes[i], this.rawArguments[i])) {
 					return Integer.MAX_VALUE - 512;
 				}
 			}
+			// 如果转换后的参数对象类型和原参数对象类型均是继承或实现自对应的参数类型，则返回最大值-1024
 			return Integer.MAX_VALUE - 1024;
 		}
 
