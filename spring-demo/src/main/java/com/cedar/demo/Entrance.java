@@ -1,5 +1,6 @@
 package com.cedar.demo;
 
+import com.cedar.demo.aop.TestAopBean;
 import com.cedar.demo.customertag.UserBeanDefinition;
 import com.cedar.demo.dto.MyTestBean;
 import com.cedar.demo.factorybean.Car;
@@ -87,7 +88,11 @@ public class Entrance {
 		System.out.println();
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/myTestBean.xml");
 		MyTestBean myTestBean = (MyTestBean)applicationContext.getBean("myTestBean");
-
 		myTestBean.printQualifier();
+
+
+		System.out.println("##############################TestAopBean############################################");
+		TestAopBean testAop = (TestAopBean)applicationContext.getBean("test");
+		testAop.test();
 	}
 }
