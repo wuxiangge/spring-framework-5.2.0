@@ -300,6 +300,7 @@ public class MethodInvoker {
 	 * <p>Note: This is the algorithm used by MethodInvoker itself and also the algorithm
 	 * used for constructor and factory method selection in Spring's bean container (in case
 	 * of lenient constructor resolution which is the default for regular bean definitions).
+	 * 构造函数和工厂方法选择的算法
 	 * @param paramTypes the parameter types to match
 	 * @param args the arguments to match
 	 * @return the accumulated weight for all arguments
@@ -307,6 +308,7 @@ public class MethodInvoker {
 	public static int getTypeDifferenceWeight(Class<?>[] paramTypes, Object[] args) {
 		int result = 0;
 		for (int i = 0; i < paramTypes.length; i++) {
+			// 如果参数不是对应参数类型的实现或子类，则直接返回Integer.MAX_VALUE
 			if (!ClassUtils.isAssignableValue(paramTypes[i], args[i])) {
 				return Integer.MAX_VALUE;
 			}
@@ -314,10 +316,16 @@ public class MethodInvoker {
 				Class<?> paramType = paramTypes[i];
 				Class<?> superClass = args[i].getClass().getSuperclass();
 				while (superClass != null) {
+					// 循环比较参数的父类，如果参数的父类同参数类型一致，则权重+2；
+					// 如果参数的父类同参数类型不一致，但是父类是参数类型的父类或实现类，则权重+2，继续获取父类的父类，进行参数类型的比较；
+					// 直至参数类型的父类同参数类型不一致，且不是参数类型的子类或实现类
+
 					if (paramType.equals(superClass)) {
 						result = result + 2;
 						superClass = null;
 					}
+					// 如果参数的父类仍然继承或实现参数类，则权重+2，继续循环父类的父类
+
 					else if (ClassUtils.isAssignable(paramType, superClass)) {
 						result = result + 2;
 						superClass = superClass.getSuperclass();
@@ -326,11 +334,13 @@ public class MethodInvoker {
 						superClass = null;
 					}
 				}
+				// 如果参数类型是一个接口，则权重+1
 				if (paramType.isInterface()) {
 					result = result + 1;
 				}
 			}
 		}
+		// 返回最终权重值
 		return result;
 	}
 
