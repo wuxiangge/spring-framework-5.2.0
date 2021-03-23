@@ -34,8 +34,8 @@
 		</constructor-arg>
 		<meta key="testStr" value="mataTest"/>
 
-		<!--注解没有生效看怎么处理 xmlfactory 不支持注解-->
-		<!--		<property name="qualifierClazz" ref="qualifierClazz"/>-->
+		<!--		注解没有生效看怎么处理 xmlfactory 不支持注解-->
+		<property name="qualifierClazz" ref="qualifierClazz"/>
 
 	</bean>
 
