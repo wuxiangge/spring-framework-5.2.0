@@ -1773,6 +1773,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				// 如果指定的bean是子bean则合并父类属性
 				mbd = getMergedLocalBeanDefinition(beanName);
 			}
+			// 如果是spring自身的则为true 否则为false
 			boolean synthetic = (mbd != null && mbd.isSynthetic());
 			object = getObjectFromFactoryBean(factory, beanName, !synthetic);
 		}

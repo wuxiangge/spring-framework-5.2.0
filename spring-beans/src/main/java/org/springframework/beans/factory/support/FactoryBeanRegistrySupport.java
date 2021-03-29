@@ -110,6 +110,7 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 							// 添加到已经创建缓存中
 							beforeSingletonCreation(beanName);
 							try {
+								// postProcess ObjectFactory 后处理器
 								object = postProcessObjectFromFactoryBean(object, beanName);
 							} catch (Throwable ex) {
 								throw new BeanCreationException(beanName,
@@ -119,6 +120,7 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 							}
 						}
 						if (containsSingleton(beanName)) {
+							// 添加缓存
 							this.factoryBeanObjectCache.put(beanName, object);
 						}
 					}
