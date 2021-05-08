@@ -1,6 +1,9 @@
 package com.cedar.demo.aop;
 
-public class TestAopBean {
+import org.springframework.stereotype.Component;
+
+@Component
+public class TestAopBean implements TestAopBeanService{
 
 	private String id = "testAopBeanString";
 
@@ -12,6 +15,7 @@ public class TestAopBean {
 		this.id = id;
 	}
 
+	@Override
 	public void test() {
 		System.out.println("test");
 	}

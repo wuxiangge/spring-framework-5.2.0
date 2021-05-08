@@ -1,18 +1,21 @@
 package com.cedar.demo;
 
 import com.cedar.demo.aop.TestAopBean;
+import com.cedar.demo.aop.TestAopBeanService;
 import com.cedar.demo.dto.MyTestBean;
 import com.cedar.demo.service.HelloService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author zhangnan
  * @date 2021/3/2 12:37
  */
+@EnableAspectJAutoProxy
 @Configuration
 @ComponentScan("com.cedar")
 public class Entrance {
@@ -98,8 +101,12 @@ public class Entrance {
 			System.out.println(beanDefinitionName);
 		}
 
-		HelloService helloService = (HelloService) applicationContext.getBean("helloServiceImpl");
-		String result = helloService.sayHello("张楠");
-		System.out.println(result);
+//		HelloService helloService = (HelloService) applicationContext.getBean("helloServiceImpl");
+//		String result = helloService.sayHello("张楠");
+//		System.out.println(result);
+//
+//
+//		TestAopBeanService testAopBean = (TestAopBeanService)applicationContext.getBean("testAopBean");
+//		testAopBean.test();
 	}
 }

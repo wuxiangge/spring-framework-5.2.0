@@ -2,7 +2,9 @@ package com.cedar.demo.aop.advisor;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Aspect
 public class AspectJTest {
 
