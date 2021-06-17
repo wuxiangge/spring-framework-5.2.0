@@ -101,12 +101,12 @@ public class Entrance {
 			System.out.println(beanDefinitionName);
 		}
 
-//		HelloService helloService = (HelloService) applicationContext.getBean("helloServiceImpl");
-//		String result = helloService.sayHello("张楠");
-//		System.out.println(result);
-//
-//
-//		TestAopBeanService testAopBean = (TestAopBeanService)applicationContext.getBean("testAopBean");
-//		testAopBean.test();
+		HelloService helloService = (HelloService) applicationContext.getBean("helloServiceImpl");
+		String result = helloService.sayHello("张楠");
+		System.out.println(result);
+
+
+		TestAopBeanService testAopBean = (TestAopBeanService)applicationContext.getBean("testAopBean");
+		testAopBean.test();
 	}
 }
