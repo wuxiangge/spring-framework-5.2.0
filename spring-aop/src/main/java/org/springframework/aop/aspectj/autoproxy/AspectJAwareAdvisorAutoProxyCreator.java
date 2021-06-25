@@ -95,6 +95,14 @@ public class AspectJAwareAdvisorAutoProxyCreator extends AbstractAdvisorAutoProx
 		AspectJProxyUtils.makeAdvisorChainAspectJCapableIfNecessary(candidateAdvisors);
 	}
 
+	/**
+	 * findCandidateAdvisors
+	 *
+	 *
+	 * @param beanClass the class of the bean
+	 * @param beanName the name of the bean
+	 * @return
+	 */
 	@Override
 	protected boolean shouldSkip(Class<?> beanClass, String beanName) {
 		// TODO: Consider optimization by caching the list of the aspect names
@@ -102,8 +110,7 @@ public class AspectJAwareAdvisorAutoProxyCreator extends AbstractAdvisorAutoProx
 		for (Advisor advisor : candidateAdvisors) {
 			if (advisor instanceof AspectJPointcutAdvisor &&
 					((AspectJPointcutAdvisor) advisor).getAspectName().equals(beanName)) {
-				return true;
-			}
+				return true; }
 		}
 		return super.shouldSkip(beanClass, beanName);
 	}

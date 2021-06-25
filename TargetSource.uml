@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.aop.TargetSource</OriginalElement>
+  <nodes>
+    <node x="646.5" y="0.0">org.springframework.aop.TargetClassAware</node>
+    <node x="795.0" y="212.0">org.springframework.aop.target.HotSwappableTargetSource</node>
+    <node x="400.0" y="212.0">org.springframework.aop.target.SingletonTargetSource</node>
+    <node x="1258.0" y="212.0">org.springframework.aop.target.CommonsPool2TargetSource</node>
+    <node x="676.0" y="106.0">org.springframework.aop.TargetSource</node>
+    <node x="0.0" y="212.0">org.springframework.aop.target.PrototypeTargetSource</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.aop.target.HotSwappableTargetSource" target="org.springframework.aop.TargetSource" relationship="REALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="1016.5" y="187.0" />
+      <point x="802.0" y="187.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="org.springframework.aop.target.PrototypeTargetSource" target="org.springframework.aop.TargetSource" relationship="REALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="190.0" y="187.0" />
+      <point x="802.0" y="187.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="org.springframework.aop.TargetSource" target="org.springframework.aop.TargetClassAware" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="org.springframework.aop.target.SingletonTargetSource" target="org.springframework.aop.TargetSource" relationship="REALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="587.5" y="187.0" />
+      <point x="802.0" y="187.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="org.springframework.aop.target.CommonsPool2TargetSource" target="org.springframework.aop.TargetSource" relationship="REALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="1487.0" y="187.0" />
+      <point x="802.0" y="187.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="858.0" y="134.0" />
+  <SelectedNodes>
+    <node>org.springframework.aop.TargetSource</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

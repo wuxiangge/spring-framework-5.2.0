@@ -390,6 +390,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	}
 
 	/**
+	 * parseAopElement
 	 * Subclasses should override this method to return {@code true} if the
 	 * given bean should not be considered for auto-proxying by this post-processor.
 	 * <p>Sometimes we need to be able to avoid this happening, e.g. if it will lead to
