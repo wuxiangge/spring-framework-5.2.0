@@ -12,6 +12,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
+ * 测试今天的成果
+ *
  * @author zhangnan
  * @date 2021/3/2 12:37
  */
@@ -106,7 +108,7 @@ public class Entrance {
 		System.out.println(result);
 
 
-		TestAopBeanService testAopBean = (TestAopBeanService)applicationContext.getBean("testAopBean");
+		TestAopBeanService testAopBean = (TestAopBeanService) applicationContext.getBean("testAopBean");
 		testAopBean.test();
 	}
 }
